@@ -1,5 +1,5 @@
 const sayHi = () => {
-    console.log('Hello World');
+    console.log('Hello');
 };
 
 export {sayHi};

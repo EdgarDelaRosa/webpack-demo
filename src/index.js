@@ -1,7 +1,13 @@
 import {sayHi} from './messages';
-import {displayCheetah, displaySloth} from './imageDisplay';
+import {displaySloth} from './imageDisplay';
+import {displayButton} from './button';
+import './hot';
 
 sayHi();
 
 displaySloth();
-displayCheetah();
+displayButton();
+
+if (module.hot) {
+  module.hot.accept('./hot');
+}
