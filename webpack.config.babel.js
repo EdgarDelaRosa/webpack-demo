@@ -15,6 +15,19 @@ const commonConfig = {
     path: PATHS.build,
     filename: '[name].js',
   },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+
+        loader: 'eslint-loader',
+        options: {
+          emitWarning: true,
+        },
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Webpack demo',
@@ -28,6 +41,11 @@ const productionConfig = () => commonConfig;
 const developmentConfig = () => {
   const config = {
     devServer: {
+      overlay: {
+        errors: true,
+        warnings: true,
+      },
+
       // Enable history API fallback so HTML5 History API based
       // routing works. Good for complex setups.
       historyApiFallback: true,
@@ -53,7 +71,6 @@ const developmentConfig = () => {
     config
   );
 };
-
 
 
 export default (env) => {
